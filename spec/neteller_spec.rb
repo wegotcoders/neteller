@@ -1,6 +1,13 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe "Order" do
+  before do
+    Neteller::Config.new do |config|
+      config.client_id = '123'
+      config.client_secret = '123'
+      config.merchant_ref_id = '123'
+    end
+  end
 
   let (:order) do
     Neteller::Order.new({
