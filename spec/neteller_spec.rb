@@ -16,29 +16,28 @@ describe "Order" do
   end
 
   let (:order_params) do
-
-   {
-     "merchantRefId": "123123",
-     "totalAmount": 3599,
-     "currency": "EUR",
-     "lang": "en_US",
-     "items": [{"name": "Item A"}],
-     "redirects": [
-      {
-       "rel": "on_success",
-       "returnKeys": [
-         "id"
-         ],
-         "uri": "https://example.com/success.html"
-         },
-         {
-           "rel": "on_cancel",
-           "returnKeys": [
-             "id"
-             ],
-             "uri": "https://example.com/cancel.html"
-          }
-        ]
+    {
+      "merchantRefId": "123123",
+      "totalAmount": 3599,
+      "currency": "EUR",
+      "lang": "en_US",
+      "items": [{"name": "Item A"}],
+      "redirects": [
+        {
+          "rel": "on_success",
+          "returnKeys": [
+            "id"
+          ],
+          "uri": "https://example.com/success.html"
+        },
+        {
+          "rel": "on_cancel",
+          "returnKeys": [
+            "id"
+          ],
+          "uri": "https://example.com/cancel.html"
+        }
+      ]
     }
   end
 
