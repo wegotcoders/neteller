@@ -16,26 +16,27 @@ describe "Order" do
   end
 
   let (:order_params) do
-    order = {
-      "merchantRefId": "123123",
-      "totalAmount": 3599,
-      "currency": "EUR",
-      "lang": "en_US",
-      "items": [{"name": "100 Iconic Coins"}],
-      "redirects": [
-        {
-          "rel": "on_success",
-          "returnKeys": [],
-          "uri": "https://example.com/success.html"
-        },
-        {
-          "rel": "on_cancel",
-          "returnKeys": [],
-          "uri": "https://example.com/cancel.html"
-        }
-      ]
+    {
+      order: {
+        "merchantRefId": "123123",
+        "totalAmount": 3599,
+        "currency": "EUR",
+        "lang": "en_US",
+        "items": [{"name": "100 Iconic Coins"}],
+        "redirects": [
+          {
+            "rel": "on_success",
+            "returnKeys": [],
+            "uri": "https://example.com/success.html"
+          },
+          {
+            "rel": "on_cancel",
+            "returnKeys": [],
+            "uri": "https://example.com/cancel.html"
+          }
+        ]
+      }
     }
-    { order: order }
   end
 
   it "renders an Order in JSON format required by Neteller" do
