@@ -25,16 +25,12 @@ describe "Order" do
       "redirects": [
         {
           "rel": "on_success",
-          "returnKeys": [
-            "id"
-          ],
+          "returnKeys": ["id"],
           "uri": "https://example.com/success.html"
         },
         {
           "rel": "on_cancel",
-          "returnKeys": [
-            "id"
-          ],
+          "returnKeys": ["id"],
           "uri": "https://example.com/cancel.html"
         }
       ]
