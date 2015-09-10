@@ -10,7 +10,7 @@ describe "Order" do
       lang: 'en_US',
       ip: '123.123.123',
       redirects_success: 'yes...',
-      redirects_cancel: 'no...'
+      redirects_cancel: 'no...',
       item_name: '100 Iconic Coins'
     })
   end
@@ -43,7 +43,7 @@ describe "Order" do
   end
 
   it "renders an Order in JSON format required by Neteller" do
-    expect(order.to_h) eq(order_params)
+    (order.to_h).should eq(order_params)
   end
 end
 
