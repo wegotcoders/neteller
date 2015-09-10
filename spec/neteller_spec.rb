@@ -43,4 +43,3 @@ describe "Order" do
     (order.to_h).should eq(order_params)
   end
 end
-
