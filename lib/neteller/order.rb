@@ -7,21 +7,21 @@ module Neteller
     def to_h
       {
         order: {
-          "merchantRefId": @merchant_ref_id,
-          "totalAmount": @total_amount,
-          "currency": @currency,
-          "lang": @lang,
-          "items": [{"name": @item_name}],
-          "redirects": [
+          merchantRefId: @merchant_ref_id,
+          totalAmount: @total_amount,
+          currency: @currency,
+          lang: @lang,
+          items: [{name: @item_name}],
+          redirects: [
             {
-              "rel": "on_success",
-              "returnKeys": [],
-              "uri": @redirects_success
+              rel: "on_success",
+              returnKeys: [],
+              uri: @redirects_success
             },
             {
-              "rel": "on_cancel",
-              "returnKeys": [],
-              "uri": @redirects_cancel
+              rel: "on_cancel",
+              returnKeys: [],
+              uri: @redirects_cancel
             }
           ]
         }

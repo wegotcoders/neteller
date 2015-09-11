@@ -25,21 +25,21 @@ describe "Order" do
   let (:order_params) do
     {
       order: {
-        "merchantRefId": "123123",
-        "totalAmount": 3599,
-        "currency": "EUR",
-        "lang": "en_US",
-        "items": [{"name": "100 Iconic Coins"}],
-        "redirects": [
+        merchantRefId: "123123",
+        totalAmount: 3599,
+        currency: "EUR",
+        lang: "en_US",
+        items: [{name: "100 Iconic Coins"}],
+        redirects: [
           {
-            "rel": "on_success",
-            "returnKeys": [],
-            "uri": "https://example.com/success.html"
+            rel: "on_success",
+            returnKeys: [],
+            uri: "https://example.com/success.html"
           },
           {
-            "rel": "on_cancel",
-            "returnKeys": [],
-            "uri": "https://example.com/cancel.html"
+            rel: "on_cancel",
+            returnKeys: [],
+            uri: "https://example.com/cancel.html"
           }
         ]
       }
