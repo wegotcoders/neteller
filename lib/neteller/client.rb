@@ -19,13 +19,13 @@ module Neteller
     def pay!(payment)
       headers = {
         "Content-Type" => 'application/json',
-        "Authorization" => "Bearer #{obtain_access_token}"
-       }
-      HTTParty.post("https://api.neteller.com/v1/orders", :body => payment.to_h.to_json, :headers => headers )
+        "Authorization" => "Bearer #{obtain_access_token['accessToken']}"
+      }
+      HTTParty.post("https://test.api.neteller.com/v1/orders", :body => payment.to_h.to_json, :headers => headers )
     end
 
     def obtain_access_token
-      HTTParty.post("https://api.neteller.com/v1/oauth2/token?grant_type=client_credentials", :basic_auth => Base64.encode("#{@client_id}:#{@client_secret}"))
+      HTTParty.post("https://test.api.neteller.com/v1/oauth2/token?grant_type=client_credentials", :headers => {'Content-Type' => 'application/json', 'Cache-control' => 'no-cache' }, :basic_auth => { username: @client_id, password: @client_secret})
     end
   end
 end
