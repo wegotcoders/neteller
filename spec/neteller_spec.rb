@@ -7,6 +7,7 @@ describe "Order" do
       config.client_secret = '123'
       config.merchant_ref_id = '123'
     end
+    @client = Neteller::Client.new
   end
 
   let (:order) do
@@ -48,5 +49,13 @@ describe "Order" do
 
   it "renders an Order in JSON format required by Neteller" do
     (order.to_h).should eq(order_params)
+  end
+
+  describe "Client" do
+    it 'has all the settings' do
+      Neteller::Client.config.merchant_ref_id.should  eq('123')
+      Neteller::Client.config.client_id.should eq('123')
+      Neteller::Client.config.client_secret.should eq('123')
+    end
   end
 end
