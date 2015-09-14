@@ -1,5 +1,3 @@
-require 'base64'
-
 module Neteller
   class Client
     include HTTParty
@@ -13,12 +11,12 @@ module Neteller
     end
 
     def initialize
-      @client_id, @client_secret, @merchant_ref_id = @@config.to_a
+      @client_id, @client_secret = @@config.to_a
     end
 
     def pay!(payment)
       headers = {
-        "Content-Type" => 'application/json',
+        "Content-Type" => "application/json",
         "Authorization" => "Bearer #{obtain_access_token['accessToken']}"
       }
       HTTParty.post("https://test.api.neteller.com/v1/orders", :body => payment.to_h.to_json, :headers => headers )

@@ -8,7 +8,7 @@ module Neteller
     end
 
     def to_a
-      [@client_id, @client_secret, @merchant_ref_id]
+      [@client_id, @client_secret]
     end
   end
 end
