@@ -19,7 +19,8 @@ module Neteller
         "Content-Type" => "application/json",
         "Authorization" => "Bearer #{obtain_access_token['accessToken']}"
       }
-      HTTParty.post("https://test.api.neteller.com/v1/orders", :body => payment.to_h.to_json, :headers => headers )
+      response = HTTParty.post("https://test.api.neteller.com/v1/orders", :body => payment.to_h.to_json, :headers => headers )
+      Response.new(response).to_h
     end
 
     def obtain_access_token

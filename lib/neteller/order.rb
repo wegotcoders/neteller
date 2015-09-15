@@ -11,7 +11,6 @@ module Neteller
           totalAmount: @total_amount,
           currency: @currency,
           lang: @lang,
-          items: [{name: @item_name}],
           redirects: [
             {
               rel: "on_success",

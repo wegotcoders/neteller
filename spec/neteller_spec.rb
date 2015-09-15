@@ -5,7 +5,6 @@ describe "Order" do
     Neteller::Config.new do |config|
       config.client_id = '123'
       config.client_secret = '123'
-      config.merchant_ref_id = '123'
     end
     @client = Neteller::Client.new
   end
@@ -30,7 +29,7 @@ describe "Order" do
         totalAmount: 3599,
         currency: "EUR",
         lang: "en_US",
-        items: [{name: "100 Iconic Coins"}],
+        #items: [{name: "100 Iconic Coins"}],
         redirects: [
           {
             rel: "on_success",
@@ -53,7 +52,6 @@ describe "Order" do
 
   describe "Client" do
     it 'has all the settings' do
-      Neteller::Client.config.merchant_ref_id.should  eq('123')
       Neteller::Client.config.client_id.should eq('123')
       Neteller::Client.config.client_secret.should eq('123')
     end
