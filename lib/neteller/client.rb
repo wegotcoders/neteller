@@ -32,7 +32,7 @@ module Neteller
         "Content-Type" => "application/json",
         "Authorization" => "Bearer #{obtain_access_token['accessToken']}"
       }
-      HTTParty.get(url[0..-9], :headers => headers)
+      HTTParty.get(url[0..-9], :headers => headers).to_h
     end
   end
 end
