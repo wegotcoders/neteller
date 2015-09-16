@@ -26,5 +26,13 @@ module Neteller
     def obtain_access_token
       HTTParty.post("https://test.api.neteller.com/v1/oauth2/token?grant_type=client_credentials", :headers => {'Content-Type' => 'application/json', 'Cache-control' => 'no-cache' }, :basic_auth => { username: @client_id, password: @client_secret})
     end
+
+    def order_lookup(url)
+      headers = {
+        "Content-Type" => "application/json",
+        "Authorization" => "Bearer #{obtain_access_token['accessToken']}"
+      }
+      HTTParty.get(url, :headers => headers)
+    end
   end
 end
