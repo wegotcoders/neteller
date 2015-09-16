@@ -1,5 +1,6 @@
 module Neteller
   class Order
+    attr_accessor :merchant_ref_id
     def initialize(options={})
       options.each { |name, value| instance_variable_set("@#{name}", value) }
     end
