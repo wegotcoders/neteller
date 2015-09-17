@@ -11,7 +11,7 @@ module Neteller
     end
 
     def initialize
-      @client_id, @client_secret = @@config.to_a
+      @client_id, @client_secret, @webhook_key = @@config.to_a
     end
 
     def pay!(payment)
