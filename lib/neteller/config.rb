@@ -1,6 +1,6 @@
 module Neteller
   class Config
-    attr_accessor :client_id, :client_secret, :merchant_ref_id
+    attr_accessor :client_id, :client_secret, :merchant_ref_id, :webhook_key
 
     def initialize
       yield self
@@ -8,7 +8,7 @@ module Neteller
     end
 
     def to_a
-      [@client_id, @client_secret]
+      [@client_id, @client_secret, @webhook_key]
     end
   end
 end
