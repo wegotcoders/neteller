@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.authors = ["Michael Worthingon"]
   s.date = "2015-09-18"
-  s.description = "TODO: longer description of your gem"
+  s.description = "A ruby client to the Neteller API"
   s.email = "ppyxmw@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
