@@ -22,6 +22,30 @@ describe "Order" do
     })
   end
 
+  let (:transfer_out) do
+    Neteller::TransferOut.new({
+      payee_profile_email: "john.doe@email.com",
+      transaction_amount: 2500,
+      transaction_currency: "EUR",
+      transaction_merchant_ref_id: "20140203113703",
+      message: "sample message"
+    })
+  end
+
+  let (:transfer_out_params) do
+    {
+      payeeProfile: {
+        email: "john.doe@email.com"
+      },
+      transaction: {
+        amount: 2500,
+        currency: "EUR",
+        merchantRefId: "20140203113703"
+      },
+      message: "sample message"
+    }
+  end
+
   let (:order_params) do
     {
       order: {
@@ -48,6 +72,10 @@ describe "Order" do
 
   it "renders an Order in JSON format required by Neteller" do
     (order.to_h).should eq(order_params)
+  end
+
+  it "renders an TranserOut  in JSON format required by Neteller" do
+    (transfer_out.to_h).should eq(transfer_out_params)
   end
 
   describe "Client" do
