@@ -21,10 +21,11 @@ module Neteller
       }
     end
 
-    def pay!(payment)
-      response = HTTParty.post("https://test.api.neteller.com/v1/orders", :body => payment.to_h.to_json, :headers => headers )
+    def pay!(order)
+      response = HTTParty.post("https://test.api.neteller.com/v1/orders", :body => order.to_h.to_json, :headers => headers )
       Response.new(response).to_h
     end
+
 
     def obtain_access_token
       HTTParty.post("https://test.api.neteller.com/v1/oauth2/token?grant_type=client_credentials",
