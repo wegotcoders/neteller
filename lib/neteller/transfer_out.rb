@@ -1,5 +1,6 @@
 module Neteller
   class TransferOut
+    attr_accessor :transaction_merchant_ref_id
     def initialize(options)
       options.each { |name, value| instance_variable_set("@#{name}", value) } unless options.nil?
     end
