@@ -3,7 +3,7 @@ module Neteller
     attr_accessor :merchant_ref_id
 
     def initialize(options={})
-      options.each { |name, value| instance_variable_set("@#{name}", value) }
+      options.each { |name, value| instance_variable_set("@#{name}", value) } unless options.nil?
     end
 
     def to_h
