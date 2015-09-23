@@ -28,7 +28,7 @@ module Neteller
 
     def transfer_out(payment)
       response = self.class.post("https://test.api.neteller.com/v1/transferOut", :body => payment.to_h.to_json, :headers => headers)
-      response.to_json
+      response.to_h
     end
 
     def obtain_access_token
