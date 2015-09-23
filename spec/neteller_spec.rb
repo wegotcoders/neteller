@@ -83,5 +83,36 @@ describe "Order" do
       Neteller::Client.config.client_id.should eq('123')
       Neteller::Client.config.client_secret.should eq('123')
     end
+
+    describe "pay!" do
+      before do
+        @oauth_headers = {
+          :headers => { 'Content-Type' => 'application/json', 'Cache-control' => 'no-cache' },
+          :basic_auth => { username: Neteller::Client.config.client_id, password: Neteller::Client.config.client_secret }
+        }
+        @order_headers = {
+          "Content-Type" => "application/json",
+          "Authorization" => "Bearer 0.AQAAAU_5c42VAAAAAAAEk-Cgfb6_fTYKJklHoYAVZ290.ieEd7IKQB2edBF-ffC0GJeEGi2A"
+        }
+
+        @order_pay_response = {"orderId"=>"ORD_6a9d720a-833d-416d-8864-d5f46e108fc2",
+                              "merchantRefId"=>"123123",
+                              "totalAmount"=>3599,
+                              "currency"=>"EUR",
+                              "lang"=>"en_US",
+                              "status"=>"pending",
+                              "redirects"=>[{"rel"=>"on_success", "uri"=>"https://example.com/success.html"}, {"rel"=>"on_cancel", "uri"=>"https://example.com/cancel.html"}],
+                              "links"=>
+        [{"url"=>"https://test.api.neteller.com/v1/checkout/ORD_6a9d720a-833d-416d-8864-d5f46e108fc2", "rel"=>"hosted_payment", "method"=>"GET"},
+         {"url"=>"https://test.api.neteller.com/v1/orders/ORD_6a9d720a-833d-416d-8864-d5f46e108fc2", "rel"=>"self", "method"=>"GET"}]}
+      end
+
+      it "sends a POST to the Neteller endpoint" do
+        Neteller::Client.should_receive(:post).with("https://test.api.neteller.com/v1/oauth2/token?grant_type=client_credentials", @oauth_headers).
+          and_return({"accessToken"=>"0.AQAAAU_5c42VAAAAAAAEk-Cgfb6_fTYKJklHoYAVZ290.ieEd7IKQB2edBF-ffC0GJeEGi2A", "tokenType"=>"Bearer", "expiresIn"=>300})
+        Neteller::Client.should_receive(:post).with("https://test.api.neteller.com/v1/orders", :body => order.to_h.to_json, :headers => @order_headers).and_return{ @order_pay_response }
+        Neteller::Client.new.pay!(order)
+      end
+    end
   end
 end
